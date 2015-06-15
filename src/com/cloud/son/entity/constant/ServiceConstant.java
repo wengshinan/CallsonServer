@@ -1,7 +1,7 @@
 package com.cloud.son.entity.constant;
 
 /**
- * ·şÎñÀà³£Á¿
+ * æœåŠ¡ç±»å¸¸é‡
  * 
  * @author fjfh-wengsn
  *

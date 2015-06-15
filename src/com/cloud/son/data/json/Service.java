@@ -11,7 +11,7 @@ import com.cloud.son.data.IParser;
 import com.cloud.son.entity.constant.ServiceConstant;
 
 /**
- * ·şÎñÀà
+ * æœåŠ¡ç±»
  * 
  * @author fjfh-wengsn
  *
@@ -27,15 +27,15 @@ public class Service implements ICreator<JSONObject>, IParser<JSONObject> {
 	}
 	
 	/**
-	 * ·şÎñÀàĞÍ
+	 * æœåŠ¡ç±»å‹
 	 */
 	public enum ServiceType{
-		ACCOMPANY_CARE, //Åã»¤
-		MEDICAL_CARE, //Ò½ÁÆ
-		HOUSEKEEPING, //¼ÒÕş
-		FAMILY_EDUCATION, //¼Ò½Ì
-		HOUSE_REPAIREMENT, //Î¬ĞŞ
-		OTHERS,		 //ÆäËû
+		ACCOMPANY_CARE, //é™ªæŠ¤
+		MEDICAL_CARE, //åŒ»ç–—
+		HOUSEKEEPING, //å®¶æ”¿
+		FAMILY_EDUCATION, //å®¶æ•™
+		HOUSE_REPAIREMENT, //ç»´ä¿®
+		OTHERS,		 //å…¶ä»–
 	}
 	
 	private String serviceId;

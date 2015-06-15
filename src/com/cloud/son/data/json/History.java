@@ -11,7 +11,7 @@ import com.cloud.son.data.IParser;
 import com.cloud.son.entity.constant.OrderConstant;
 
 /**
- * ÀúÊ·¶©µ¥Àà
+ * å†å²è®¢å•ç±»
  * 
  * @author fjfh-wengsn
  *

@@ -8,7 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * ·şÎñ½ÓÊÕÀà
+ * æœåŠ¡æ¥æ”¶ç±»
  * 
  * @author fjfh-wengsn
  * 
@@ -39,7 +39,7 @@ public class MessageReceiver extends Thread {
 	}
 
 	/**
-	 * Éú³É·µ»Ø×Ö·û´®
+	 * ç”Ÿæˆè¿”å›å­—ç¬¦ä¸²
 	 * 
 	 * @param client2
 	 * @return

@@ -6,7 +6,7 @@ import com.cloud.son.data.ICreator;
 import com.cloud.son.data.IParser;
 
 /**
- * µØÀíÎ»ÖÃÀà
+ * åœ°ç†ä½ç½®ç±»
  * 
  * @author fjfh-wengsn
  *

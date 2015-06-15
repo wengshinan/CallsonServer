@@ -1,7 +1,7 @@
 package com.cloud.son.entity.constant;
 
 /**
- * 基本常量
+ * 鍩烘湰甯搁噺
  * 
  * @author fjfh-wengsn
  *

@@ -57,7 +57,7 @@ public class ServiceRequest implements ICreator<JSONObject>, IParser<JSONObject>
 
 
 	/**
-	 * ÇëÇóÀàĞÍ
+	 * è¯·æ±‚ç±»å‹
 	 */
 	public enum ReqType {
 		AddReqest,

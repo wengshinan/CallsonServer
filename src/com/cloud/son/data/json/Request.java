@@ -11,7 +11,7 @@ import com.cloud.son.data.IParser;
 import com.cloud.son.entity.constant.RequestConstant;
 
 /**
- * ÇëÇóÀà
+ * è¯·æ±‚ç±»
  * 
  * @author fjfh-wengsn
  *
@@ -27,7 +27,7 @@ public class Request implements ICreator<JSONObject>, IParser<JSONObject> {
 	}
 	
 	/**
-	 * ÇëÇó²ÎÊı
+	 * è¯·æ±‚å‚æ•°
 	 */
 	public class ReqParam implements ICreator<JSONObject>, IParser<JSONObject>  {
 		
@@ -78,7 +78,7 @@ public class Request implements ICreator<JSONObject>, IParser<JSONObject> {
 
 
 	/**
-	 * ÇëÇóÀàĞÍ
+	 * è¯·æ±‚ç±»å‹
 	 */
 	public enum ReqType {
 		USER_LOGIN,			//

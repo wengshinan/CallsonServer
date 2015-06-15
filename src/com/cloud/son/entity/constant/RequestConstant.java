@@ -3,7 +3,7 @@ package com.cloud.son.entity.constant;
 
 
 /**
- * ÇëÇó³£Á¿
+ * è¯·æ±‚å¸¸é‡
  * 
  * @author fjfh-wengsn
  *

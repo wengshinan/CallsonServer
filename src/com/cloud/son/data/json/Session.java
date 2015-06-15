@@ -10,7 +10,7 @@ import com.cloud.son.data.IParser;
 import com.cloud.son.entity.constant.SessionConstant;
 
 /**
- * �Ự��¼
+ * 会话记录
  * 
  * @author fjfh-wengsn
  *

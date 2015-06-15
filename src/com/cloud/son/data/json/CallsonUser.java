@@ -10,7 +10,7 @@ import com.cloud.son.data.IParser;
 import com.cloud.son.entity.constant.UserConstant;
 
 /**
- * ÓÃ»§Àà
+ * ç”¨æˆ·ç±»
  * 
  * @author fjfh-wengsn
  * 
@@ -114,13 +114,13 @@ public class CallsonUser implements ICreator<JSONObject>, IParser<JSONObject> {
 	}
 
 	/**
-	 * ÓÃ»§ÀàĞÍ
+	 * ç”¨æˆ·ç±»å‹
 	 */
 	public enum UserType {
-		CUSTOMER, //ĞèÇó¿Í»§ 
-		PROVIDER, //·şÎñÕß
-		MANAGER, //¹ÜÀíÔ±
-		VISITOR, //ÓÎ¿Í
+		CUSTOMER, //éœ€æ±‚å®¢æˆ· 
+		PROVIDER, //æœåŠ¡è€…
+		MANAGER, //ç®¡ç†å‘˜
+		VISITOR, //æ¸¸å®¢
 	}
 
 	private String uId;

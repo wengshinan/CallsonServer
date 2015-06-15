@@ -11,7 +11,7 @@ import com.cloud.son.entity.CallsonUser.UserProperty;
 import com.cloud.son.entity.ServiceRequest.ReqParam;
 
 /**
- * ÓÃÓÚÉú³ÉJSON¶ÔÏó
+ * ç”¨äºç”ŸæˆJSONå¯¹è±¡
  * 
  * @author fjfh-wengsn
  * 
@@ -37,9 +37,9 @@ public class JSONCreater {
 		//user.setUId("0000001");
 		UserProperty up = user.new UserProperty();
 		up.setAge(19);
-		up.setCnName("°Ö°Ö");
+		up.setCnName("çˆ¸çˆ¸");
 		up.setEnName("Bob");
-		up.setDescription("¿Í»§¾ÍÊÇÎÒÃÇµÄ°Ö°Ö");
+		up.setDescription("å®¢æˆ·å°±æ˜¯æˆ‘ä»¬çš„çˆ¸çˆ¸");
 		user.setUProp(up);
 		req.setUser(user);
 		

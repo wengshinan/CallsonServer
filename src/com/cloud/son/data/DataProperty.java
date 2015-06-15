@@ -4,7 +4,7 @@
 package com.cloud.son.data;
 
 /**
- * ´«ÊäÊı¾İÅäÖÃ²ÎÊı
+ * ä¼ è¾“æ•°æ®é…ç½®å‚æ•°
  * 
  * @author fjfh-wengsn
  * 
@@ -12,14 +12,14 @@ package com.cloud.son.data;
 public final class DataProperty {
 
 	/**
-	 * Êı¾İ½á¹¹
+	 * æ•°æ®ç»“æ„
 	 */
 	public static DataType dataType;
 	public static int longestLength;
 	
 	
 	/**
-	 * ¶ÁÅäÖÃ
+	 * è¯»é…ç½®
 	 */
 	public void readProperty(){
 		DataProperty.dataType = DataType.JSON;
@@ -31,7 +31,7 @@ public final class DataProperty {
 	
 
 	/**
-	 * ´«ÊäÊı¾İ¸ñÊ½
+	 * ä¼ è¾“æ•°æ®æ ¼å¼
 	 */
 	public enum DataType {
 		JSON,
