@@ -4,11 +4,11 @@
 package com.cloud.son.data;
 
 /**
- * 生成交互数据
+ * 鐢熸垚浜や簰鏁版嵁
  * 
  * @author fjfh-wengsn
  *
- * @param <DataType> 交互数据类型
+ * @param <DataType> 浜や簰鏁版嵁绫诲瀷
  */
 public interface ICreator<DataType> {
 	public DataType create();

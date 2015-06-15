@@ -20,7 +20,9 @@
           <root url="jar://$MODULE_DIR$/lib/JSON-java-master.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/lib/JSON-java-master.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>
