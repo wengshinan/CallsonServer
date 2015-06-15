@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="callson">
+    <output-path>$PROJECT_DIR$/classes/artifacts/callson</output-path>
+    <root id="archive" name="callson.jar">
+      <element id="module-output" name="Callson" />
+    </root>
+  </artifact>
+</component>
