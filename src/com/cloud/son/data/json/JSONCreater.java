@@ -5,10 +5,10 @@ package com.cloud.son.data.json;
 
 import org.json.JSONObject;
 
-import com.cloud.son.entity.CallsonUser;
-import com.cloud.son.entity.ServiceRequest;
-import com.cloud.son.entity.CallsonUser.UserProperty;
-import com.cloud.son.entity.ServiceRequest.ReqParam;
+import com.cloud.son.data.json.CallsonUser;
+import com.cloud.son.data.json.Request;
+import com.cloud.son.data.json.CallsonUser.UserProperty;
+import com.cloud.son.data.json.Request.ReqParam;
 
 /**
  * 用于生成JSON对象
@@ -24,8 +24,8 @@ public class JSONCreater {
 	 */
 	public static void main(String[] args) throws Exception {
 		
-		ServiceRequest req = new ServiceRequest();
-		req.setType(ServiceRequest.ReqType.AddReqest);
+		Request req = new Request();
+		req.setType(Request.ReqType.USER_REGISTER);
 		
 		ReqParam reqParam = req.new ReqParam();
 		reqParam.setReqDate("2015-06-05");
@@ -41,14 +41,15 @@ public class JSONCreater {
 		up.setEnName("Bob");
 		up.setDescription("客户就是我们的爸爸");
 		user.setUProp(up);
-		req.setUser(user);
+		req.setRequestBody(user.create().toString());
+		//req.set(user).;
 		
 		
 		JSONObject obj = req.create();
 		String str = obj.toString();
 		System.out.println(str);
 		
-		ServiceRequest request = new ServiceRequest();
+		Request request = new Request();
 		request.parse(new JSONObject(str));
 		System.out.println(request.getType());
 	}
