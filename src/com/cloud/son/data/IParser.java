@@ -11,7 +11,7 @@ package com.cloud.son.data;
  * @param <DataType> 交互数据类型
  */
 public interface IParser<DataType> {
-	public void parse(DataType obj);
+	void parse(DataType obj);
 	
 	//public void parse(String data);
 }

@@ -11,5 +11,5 @@ package com.cloud.son.data;
  * @param <DataType> 交互数据类型
  */
 public interface ICreator<DataType> {
-	public DataType create();
+	DataType create();
 }
