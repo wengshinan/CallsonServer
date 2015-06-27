@@ -5,9 +5,7 @@ package com.cloud.son.data.json;
 
 import org.json.JSONObject;
 
-import com.cloud.son.data.json.CallsonUser;
-import com.cloud.son.data.json.Request;
-import com.cloud.son.data.json.CallsonUser.UserProperty;
+import com.cloud.son.data.json.CallsonUserJson.UserPropertyJson;
 import com.cloud.son.data.json.Request.ReqParam;
 
 /**
@@ -32,10 +30,10 @@ public class JSONCreater {
 		reqParam.setReqTime("10:31:00");
 		req.setReqParam(reqParam);
 		
-		CallsonUser user = new CallsonUser();
-		//user.setType(CallsonUser.UserType.CUSTOMER);
+		CallsonUserJson user = new CallsonUserJson();
+		//user.setType(CallsonUserJson.UserType.CUSTOMER);
 		//user.setUId("0000001");
-		UserProperty up = user.new UserProperty();
+		UserPropertyJson up = user.new UserPropertyJson();
 		up.setAge(19);
 		up.setCnName("爸爸");
 		up.setEnName("Bob");

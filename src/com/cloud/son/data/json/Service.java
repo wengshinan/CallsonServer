@@ -76,7 +76,7 @@ public class Service implements ICreator<JSONObject>, IParser<JSONObject> {
 		Service service = new Service();
 		JSONObject obj = new JSONObject();
 		String str = null;
-		CallsonUser.UserType type = null;
+		CallsonUserJson.UserType type = null;
 		JSONArray historyArray = null;
 		obj.put(ServiceConstant.SERVICE_PARAM_SERVICEID, str);
 		obj.put("test", historyArray);

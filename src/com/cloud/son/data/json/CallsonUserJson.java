@@ -3,6 +3,7 @@
  */
 package com.cloud.son.data.json;
 
+import com.cloud.son.entity.CallsonUser;
 import org.json.JSONObject;
 
 import com.cloud.son.data.ICreator;
@@ -15,71 +16,16 @@ import com.cloud.son.entity.constant.UserConstant;
  * @author fjfh-wengsn
  * 
  */
-public class CallsonUser implements ICreator<JSONObject>, IParser<JSONObject> {
+public class CallsonUserJson extends CallsonUser implements ICreator<JSONObject>, IParser<JSONObject> {
 
-	public class UserProperty implements ICreator<JSONObject>,
+	public class UserPropertyJson extends CallsonUser.UserProperty implements ICreator<JSONObject>,
 			IParser<JSONObject> {
-		public UserProperty(){}
-		public UserProperty(JSONObject obj){
+		public UserPropertyJson(){}
+		public UserPropertyJson(JSONObject obj){
 			this.parse(obj);
 		}
-		public UserProperty(String str){
+		public UserPropertyJson(String str){
 			this(new JSONObject(str));
-		}
-		
-		String cnName;
-		String enName;
-		int age;
-		String description;
-		String password;
-		String phone;
-
-		public String getPassword() {
-			return password;
-		}
-
-		public void setPassword(String password) {
-			this.password = password;
-		}
-
-		public String getPhone() {
-			return phone;
-		}
-
-		public void setPhone(String phone) {
-			this.phone = phone;
-		}
-
-		public String getCnName() {
-			return cnName;
-		}
-
-		public void setCnName(String cnName) {
-			this.cnName = cnName;
-		}
-
-		public String getEnName() {
-			return enName;
-		}
-
-		public void setEnName(String enName) {
-			this.enName = enName;
-		}
-
-		public int getAge() {
-			return age;
-		}
-
-		public void setAge(int age) {
-			this.age = age;
-		}
-
-		public String getDescription() {
-			return description;
-		}
-
-		public void setDescription(String description) {
-			this.description = description;
 		}
 
 		@Override
@@ -113,44 +59,6 @@ public class CallsonUser implements ICreator<JSONObject>, IParser<JSONObject> {
 
 	}
 
-	/**
-	 * 用户类型
-	 */
-	public enum UserType {
-		CUSTOMER, //需求客户 
-		PROVIDER, //服务者
-		MANAGER, //管理员
-		VISITOR, //游客
-	}
-
-	private String uId;
-	private UserType type;
-	private UserProperty uProp;
-
-	public String getUId() {
-		return uId;
-	}
-
-	public void setUId(String id) {
-		uId = id;
-	}
-
-	public UserType getType() {
-		return type;
-	}
-
-	public void setType(UserType type) {
-		this.type = type;
-	}
-
-	public UserProperty getUProp() {
-		return uProp;
-	}
-
-	public void setUProp(UserProperty prop) {
-		uProp = prop;
-	}
-
 	@Override
 	public JSONObject create() {
 		JSONObject user = new JSONObject();
@@ -168,7 +76,7 @@ public class CallsonUser implements ICreator<JSONObject>, IParser<JSONObject> {
 		this.type = data.isNull(UserConstant.USER_PARAM_USERTYPE) ? 
 				null : UserType.valueOf(data.getString(UserConstant.USER_PARAM_USERTYPE));
 		this.uProp = data.isNull(UserConstant.USER_PARAM_USERPROPERTY) ? 
-				null : new UserProperty(data.getJSONObject(UserConstant.USER_PARAM_USERPROPERTY));
+				null : new UserPropertyJson(data.getJSONObject(UserConstant.USER_PARAM_USERPROPERTY));
 	}
 
 }
