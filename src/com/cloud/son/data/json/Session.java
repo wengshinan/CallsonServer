@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 import com.cloud.son.data.ICreator;
 import com.cloud.son.data.IParser;
-import com.cloud.son.entity.constant.SessionConstant;
+import com.cloud.son.data.constant.SessionConstant;
 
 /**
  * 会话记录
@@ -16,19 +16,18 @@ import com.cloud.son.entity.constant.SessionConstant;
  *
  */
 public class Session implements ICreator<JSONObject>, IParser<JSONObject> {
-	
+
+	private String sessionId;
+	private String uId;
 	public Session(){}
+
+
 	public Session(JSONObject obj){
 		this.parse(obj);
 	}
 	public Session(String str){
 		this(new JSONObject(str));
 	}
-	
-	
-	private String sessionId;
-	private String uId;
-	
 	
 	public String getSessionId() {
 		return sessionId;

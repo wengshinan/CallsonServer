@@ -7,8 +7,8 @@ import org.json.JSONObject;
 
 import com.cloud.son.data.ICreator;
 import com.cloud.son.data.IParser;
-import com.cloud.son.entity.constant.OrderConstant;
-import com.cloud.son.entity.constant.ServiceConstant;
+import com.cloud.son.data.constant.OrderConstant;
+import com.cloud.son.data.constant.ServiceConstant;
 
 /**
  * 订单类
@@ -17,6 +17,10 @@ import com.cloud.son.entity.constant.ServiceConstant;
  *
  */
 public class Order implements ICreator<JSONObject>, IParser<JSONObject> {
+
+	private String orderId;
+	private String paySerialno;
+	private String serviceId;
 	
 	public Order(){}
 	public Order(JSONObject obj){
@@ -26,11 +30,6 @@ public class Order implements ICreator<JSONObject>, IParser<JSONObject> {
 		this(new JSONObject(str));
 	}
 	
-	private String orderId;
-	private String paySerialno;
-	private String serviceId;
-	
-
 	public String getOrderId() {
 		return orderId;
 	}
@@ -47,12 +46,12 @@ public class Order implements ICreator<JSONObject>, IParser<JSONObject> {
 		this.paySerialno = paySerialno;
 	}
 
-	public void setServiceId(String serviceId) {
-		this.serviceId = serviceId;
-	}
-
 	public String getServiceId() {
 		return serviceId;
+	}
+
+	public void setServiceId(String serviceId) {
+		this.serviceId = serviceId;
 	}
 
 	@Override

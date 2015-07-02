@@ -1,4 +1,4 @@
-package com.cloud.son.entity.constant;
+package com.cloud.son.data.constant;
 
 /**
  * 订单常量

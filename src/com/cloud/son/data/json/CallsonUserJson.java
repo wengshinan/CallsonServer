@@ -1,85 +1,59 @@
 /**
- * 
+ *
  */
 package com.cloud.son.data.json;
 
-import com.cloud.son.entity.CallsonUser;
+import com.cloud.son.data.entity.CallsonUser;
+import com.cloud.son.data.entity.UserProperty;
 import org.json.JSONObject;
 
 import com.cloud.son.data.ICreator;
 import com.cloud.son.data.IParser;
-import com.cloud.son.entity.constant.UserConstant;
+import com.cloud.son.data.constant.UserConstant;
 
 /**
  * 用户类
- * 
+ *
  * @author fjfh-wengsn
- * 
  */
-public class CallsonUserJson extends CallsonUser implements ICreator<JSONObject>, IParser<JSONObject> {
+public class CallsonUserJson implements ICreator<JSONObject>, IParser<JSONObject> {
 
-	@Override
-	public JSONObject create() {
-		JSONObject user = new JSONObject();
-		user.put(UserConstant.USER_PARAM_USERID, uId);
-		user.put(UserConstant.USER_PARAM_USERTYPE, type);
-		//user.put(UserConstant.USER_PARAM_USERPROPERTY, uProp == null ? null : uProp.create());
+    private CallsonUser user;
 
-		return user;
-	}
+    public CallsonUserJson(CallsonUser user) {
+        if (null == user) this.user = new CallsonUser();
+        this.user = user;
+    }
 
-	@Override
-	public void parse(JSONObject data) {
-		this.uId = data.isNull(UserConstant.USER_PARAM_USERID) ?
-				null : data.getString(UserConstant.USER_PARAM_USERID);
-		this.type = data.isNull(UserConstant.USER_PARAM_USERTYPE) ?
-				null : UserType.valueOf(data.getString(UserConstant.USER_PARAM_USERTYPE));
-		this.uProp = data.isNull(UserConstant.USER_PARAM_USERPROPERTY) ?
-				null : new UserPropertyJson(data.getJSONObject(UserConstant.USER_PARAM_USERPROPERTY));
-	}
+    public CallsonUserJson(JSONObject object) {
+        this.user = new CallsonUser();
+        this.parse(object);
+    }
 
-	public class UserPropertyJson extends CallsonUser.UserProperty implements ICreator<JSONObject>,
-			IParser<JSONObject> {
-		public UserPropertyJson() {
-		}
+    public CallsonUser getUser() {
+        return this.user;
+    }
 
-		public UserPropertyJson(JSONObject obj) {
-			this.parse(obj);
-		}
+    @Override
+    public JSONObject create() {
+        JSONObject userObj = new JSONObject();
+        userObj.put(UserConstant.USER_PARAM_USERID, user.getUId());
+        userObj.put(UserConstant.USER_PARAM_USERTYPE, user.getType());
+        userObj.put(UserConstant.USER_PARAM_USERPROPERTY, user.getUProp() == null ? null :
+                new UserPropertyJson(user.getUProp()).create());
 
-		public UserPropertyJson(String str) {
-			this(new JSONObject(str));
-		}
+        return userObj;
+    }
 
-		@Override
-		public JSONObject create() {
-			JSONObject prop = new JSONObject();
-			prop.put(UserConstant.USER_PARAM_CNNAME, cnName);
-			prop.put(UserConstant.USER_PARAM_ENNAME, enName);
-			prop.put(UserConstant.USER_PARAM_AGE, age);
-			prop.put(UserConstant.USER_PARAM_DESCRIPTION, description);
-			prop.put(UserConstant.USER_PARAM_PHONE, phone);
-			prop.put(UserConstant.USER_PARAM_PASSWORD, password);
-			return prop;
-		}
+    @Override
+    public void parse(JSONObject data) {
+        this.user.setUId(data.isNull(UserConstant.USER_PARAM_USERID) ?
+                null : data.getString(UserConstant.USER_PARAM_USERID));
+        this.user.setType(data.isNull(UserConstant.USER_PARAM_USERTYPE) ?
+                null : CallsonUser.UserType.valueOf(data.getString(UserConstant.USER_PARAM_USERTYPE)));
+        this.user.setUProp(data.isNull(UserConstant.USER_PARAM_USERPROPERTY) ?
+                null : new UserPropertyJson(data.getJSONObject(UserConstant.USER_PARAM_USERPROPERTY)).getUserProp());
+    }
 
-		@Override
-		public void parse(JSONObject data) {
-			cnName = data.isNull(UserConstant.USER_PARAM_CNNAME) ?
-					null : data.getString(UserConstant.USER_PARAM_CNNAME);
-			enName = data.isNull(UserConstant.USER_PARAM_ENNAME) ?
-					null : data.getString(UserConstant.USER_PARAM_ENNAME);
-			age = data.isNull(UserConstant.USER_PARAM_AGE) ?
-					0 : data.getInt(UserConstant.USER_PARAM_AGE);
-			description = data.isNull(UserConstant.USER_PARAM_DESCRIPTION) ?
-					null : data.getString(UserConstant.USER_PARAM_DESCRIPTION);
-			phone = data.isNull(UserConstant.USER_PARAM_PHONE) ?
-					null : data.getString(UserConstant.USER_PARAM_PHONE);
-			password = data.isNull(UserConstant.USER_PARAM_PASSWORD) ?
-					null : data.getString(UserConstant.USER_PARAM_PASSWORD);
-
-		}
-
-	}
 
 }

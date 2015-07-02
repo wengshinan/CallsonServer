@@ -3,26 +3,20 @@ package com.cloud.son.test;
 import com.cloud.son.server.HttpUtil;
 import com.cloud.son.utils.DbUtil;
 
-import javax.xml.transform.Result;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.Socket;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class Test {
+public class ServerTest {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 
-		Test test = new Test();
-		test.socketServerTest();
-		//test.databaseTest();
+		ServerTest serverTest = new ServerTest();
+		serverTest.socketServerTest();
+		//serverTest.databaseTest();
 
 
 	}

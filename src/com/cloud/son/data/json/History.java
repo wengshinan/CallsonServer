@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 import com.cloud.son.data.ICreator;
 import com.cloud.son.data.IParser;
-import com.cloud.son.entity.constant.OrderConstant;
+import com.cloud.son.data.constant.OrderConstant;
 
 /**
  * 历史订单类
@@ -17,16 +17,16 @@ import com.cloud.son.entity.constant.OrderConstant;
  *
  */
 public class History implements ICreator<JSONObject>, IParser<JSONObject> {
-	
+
+	List<Order> orderList = null;
 	public History(){}
 	public History(JSONObject obj){
 		this.parse(obj);
 	}
+
 	public History(String str){
 		this(new JSONObject(str));
 	}
-	
-	List<Order> orderList = null;
 
 	@Override
 	public JSONObject create() {
