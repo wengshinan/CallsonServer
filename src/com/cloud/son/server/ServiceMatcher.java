@@ -22,7 +22,7 @@ public class ServiceMatcher {
 		if (recvData == null)
 			throw new Exception("");
 		
-		if (DataProperty.dataType == DataProperty.DataType.JSON){
+		if (DataProperty.getDataType() == DataProperty.DataType.JSON){
 			JSONObject recvObject = getJSONObject();
 		}
 

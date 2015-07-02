@@ -1,5 +1,6 @@
 package com.cloud.son.server.handler;
 
+import com.cloud.son.controller.UserInfoController;
 import com.sun.deploy.net.HttpResponse;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
@@ -23,13 +24,17 @@ public class UserInfoHandler implements HttpHandler {
         InputStream is = httpExchange.getRequestBody();
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String line;
-        String request = null;
+        String reqStr = null;
         while ((line = br.readLine()) != null) {
-            request += line;
+            reqStr += line;
         }
-        System.out.println(request);
+        System.out.println(reqStr);
 
-        String response = "Response From UserInfo";
+        UserInfoController userCont = new UserInfoController();
+        String response = userCont.dealRequest(reqStr);
+
+
+        //String response = "Response From UserInfo";
         httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, response.getBytes().length);
         OutputStream os = httpExchange.getResponseBody();
         os.write(response.getBytes("utf-8"));

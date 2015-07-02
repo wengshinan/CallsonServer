@@ -6,9 +6,9 @@ package com.cloud.son.data.entity;
 public class CallsonUser {
 
 
-    protected String uId;
-    protected UserType type;
-    protected UserProperty uProp;
+    private String uId;
+    private UserType type;
+    private UserProperty uProp;
 
     public String getUId() {
         return uId;

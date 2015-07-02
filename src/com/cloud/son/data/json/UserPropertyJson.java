@@ -15,7 +15,7 @@ public class UserPropertyJson implements ICreator<JSONObject>,
 
     public UserPropertyJson(UserProperty userProp) {
         if (null == userProp) this.userProp = new UserProperty();
-        this.userProp = userProp;
+        else this.userProp = userProp;
     }
 
     public UserPropertyJson(JSONObject object) {

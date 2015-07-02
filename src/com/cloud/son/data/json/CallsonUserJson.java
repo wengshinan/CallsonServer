@@ -3,13 +3,11 @@
  */
 package com.cloud.son.data.json;
 
-import com.cloud.son.data.entity.CallsonUser;
-import com.cloud.son.data.entity.UserProperty;
-import org.json.JSONObject;
-
 import com.cloud.son.data.ICreator;
 import com.cloud.son.data.IParser;
 import com.cloud.son.data.constant.UserConstant;
+import com.cloud.son.data.entity.CallsonUser;
+import org.json.JSONObject;
 
 /**
  * 用户类
@@ -22,7 +20,7 @@ public class CallsonUserJson implements ICreator<JSONObject>, IParser<JSONObject
 
     public CallsonUserJson(CallsonUser user) {
         if (null == user) this.user = new CallsonUser();
-        this.user = user;
+        else this.user = user;
     }
 
     public CallsonUserJson(JSONObject object) {

@@ -5,12 +5,12 @@ package com.cloud.son.data.entity;
  */
 public class UserProperty {
 
-    protected String cnName;
-    protected String enName;
-    protected int age;
-    protected String description;
-    protected String password;
-    protected String phone;
+    private String cnName;
+    private String enName;
+    private int age;
+    private String description;
+    private String password;
+    private String phone;
 
     public String getPassword() {
         return password;
