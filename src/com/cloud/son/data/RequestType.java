@@ -10,7 +10,7 @@ public class RequestType {
         LOGOUT,
         PASSWORD_RESET,
         PHONE_CHANGE,
-        INFO_EDIT,
+        INFO_MODIFY,
     }
 
     public enum ServiceReqType{

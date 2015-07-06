@@ -1,6 +1,6 @@
 package com.cloud.son.test;
 
-import com.cloud.son.server.HttpUtil;
+import com.cloud.son.server.HttpManager;
 import com.cloud.son.utils.DbUtil;
 
 import java.sql.Connection;
@@ -83,7 +83,7 @@ public class ServerTest {
 
 		}
 		*/
-		HttpUtil userUtil = new HttpUtil();
+		HttpManager userUtil = new HttpManager();
 	}
 
 }

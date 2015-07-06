@@ -6,15 +6,15 @@ package com.cloud.son.data.entity;
 public class CallsonUser {
 
 
-    private String uId;
+    private int uId;
     private UserType type;
     private UserProperty uProp;
 
-    public String getUId() {
+    public int getUId() {
         return uId;
     }
 
-    public void setUId(String id) {
+    public void setUId(int id) {
         uId = id;
     }
 

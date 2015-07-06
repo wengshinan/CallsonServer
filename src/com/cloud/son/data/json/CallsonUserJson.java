@@ -46,7 +46,7 @@ public class CallsonUserJson implements ICreator<JSONObject>, IParser<JSONObject
     @Override
     public void parse(JSONObject data) {
         this.user.setUId(data.isNull(UserConstant.USER_PARAM_USERID) ?
-                null : data.getString(UserConstant.USER_PARAM_USERID));
+                null : data.getInt(UserConstant.USER_PARAM_USERID));
         this.user.setType(data.isNull(UserConstant.USER_PARAM_USERTYPE) ?
                 null : CallsonUser.UserType.valueOf(data.getString(UserConstant.USER_PARAM_USERTYPE)));
         this.user.setUProp(data.isNull(UserConstant.USER_PARAM_USERPROPERTY) ?

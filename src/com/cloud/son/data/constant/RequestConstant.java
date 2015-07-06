@@ -15,7 +15,7 @@ public class RequestConstant {
 	public static final String REQUEST_PARAM_TYPE = "type";
 	public static final String REQUEST_PARAM_PARAM = "param";
 	public static final String REQUEST_PARAM_BODY = "body";
-	public static final String REQUEST_PARAM_SESSION = "session";
+	public static final String REQUEST_PARAM_TOKEN = "session";
 	public static final String REQUEST_PARAM_LOCATION = "location";
 	public static final String REQUEST_PARAM_SERIALNO = "serialno";
 	public static final String REQUEST_PARAM_SERVICE = "service";

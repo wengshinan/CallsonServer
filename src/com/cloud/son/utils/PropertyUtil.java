@@ -16,6 +16,7 @@ public class PropertyUtil {
     public static final String KEY_SERVER_PORT = "server_port";
     public static final String KEY_DATA_TYPE = "data_type";
     public static final String KEY_DATA_LONGEST_LENGTH = "data_longest_length";
+    public static final String KEY_DATA_CHARSET = "data_charset";
     private static final String PROPERTY_FILE = "default.properties";
     private Properties properties = null;
 

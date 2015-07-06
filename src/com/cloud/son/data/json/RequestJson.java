@@ -32,6 +32,7 @@ public class RequestJson implements ICreator<JSONObject>, IParser<JSONObject> {
         JSONObject reqObj = new JSONObject();
         reqObj.put(RequestConstant.REQUEST_PARAM_TYPE, request.getRequestType());
         reqObj.put(RequestConstant.REQUEST_PARAM_BODY, request.getRequestBody());
+        reqObj.put(RequestConstant.REQUEST_PARAM_TOKEN, request.getToken());
 
         return reqObj;
     }
@@ -40,5 +41,6 @@ public class RequestJson implements ICreator<JSONObject>, IParser<JSONObject> {
     public void parse(JSONObject obj) {
         this.request.setRequestType(obj.getString(RequestConstant.REQUEST_PARAM_TYPE));
         this.request.setRequestBody(obj.getString(RequestConstant.REQUEST_PARAM_BODY));
+        this.request.setToken(obj.getString(RequestConstant.REQUEST_PARAM_TOKEN));
     }
 }

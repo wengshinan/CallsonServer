@@ -96,7 +96,7 @@ public class Request implements ICreator<JSONObject>, IParser<JSONObject> {
 		request.put(RequestConstant.REQUEST_PARAM_PARAM, reqParam==null ? null : reqParam.create());
 		request.put(RequestConstant.REQUEST_PARAM_BODY, requestBody);
 		request.put(RequestConstant.REQUEST_PARAM_LOCATION, uLocation == null ? null : uLocation.create());
-		request.put(RequestConstant.REQUEST_PARAM_SESSION, session == null ? null : session.create());
+		request.put(RequestConstant.REQUEST_PARAM_TOKEN, session == null ? null : session.create());
 		request.put(RequestConstant.REQUEST_PARAM_SERIALNO, serialno);
 		request.put(RequestConstant.REQUEST_PARAM_SERVICE, service);
 
@@ -111,8 +111,8 @@ public class Request implements ICreator<JSONObject>, IParser<JSONObject> {
 				null : new ReqParam(obj.getJSONObject(RequestConstant.REQUEST_PARAM_PARAM));
 		this.requestBody = obj.isNull(RequestConstant.REQUEST_PARAM_BODY) ?
 				null : obj.getString(RequestConstant.REQUEST_PARAM_BODY);
-		this.session = obj.isNull(RequestConstant.REQUEST_PARAM_SESSION) ?
-				null : new Session(obj.getJSONObject(RequestConstant.REQUEST_PARAM_SESSION));
+		this.session = obj.isNull(RequestConstant.REQUEST_PARAM_TOKEN) ?
+				null : new Session(obj.getJSONObject(RequestConstant.REQUEST_PARAM_TOKEN));
 		this.uLocation = obj.isNull(RequestConstant.REQUEST_PARAM_LOCATION) ?
 				null : new Location(obj.getJSONObject(RequestConstant.REQUEST_PARAM_LOCATION));
 		this.serialno = obj.isNull(RequestConstant.REQUEST_PARAM_SERIALNO) ?

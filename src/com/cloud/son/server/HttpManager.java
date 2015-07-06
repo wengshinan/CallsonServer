@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * Created by wengshinan on 2015/6/26.
  */
-public class HttpUtil {
+public class HttpManager {
 
     private static HttpServer server;
     private static Map<String, HttpHandler> handlers;
@@ -24,7 +24,7 @@ public class HttpUtil {
         handlers.put("/test", new TestHandler());
     }
 
-    public HttpUtil() {
+    public HttpManager() {
         try {
             if (null == server) {
                 server = HttpServer.create(
