@@ -1,7 +1,6 @@
 package com.cloud.son.utils;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -15,7 +14,11 @@ public class PropertyUtil {
     public static final String KEY_DB_DRIVER = "db_driver";
     public static final String KEY_SERVER_PORT = "server_port";
     public static final String KEY_DATA_TYPE = "data_type";
+    public static final String KEY_DATA_DEFAULT_KEY = "data_default_key";
     public static final String KEY_DATA_LONGEST_LENGTH = "data_longest_length";
+    public static final String KEY_CHARSET = "data_charset";
+    public static final String KEY_DATA_ENCODE_TYPE = "data_encode_type";
+
     private static final String PROPERTY_FILE = "default.properties";
     private Properties properties = null;
 
