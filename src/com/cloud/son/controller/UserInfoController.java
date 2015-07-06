@@ -15,6 +15,13 @@ import com.cloud.son.module.UserInfoModule;
  */
 public class UserInfoController {
 
+    private String phone;
+    private String token;
+
+    public UserInfoController(String phone, String token){
+        this.phone = phone;
+        this.token = token;
+    }
 
     public String dealRequest(String reqStr) {
 
