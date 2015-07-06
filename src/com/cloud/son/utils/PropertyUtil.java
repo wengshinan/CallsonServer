@@ -9,6 +9,7 @@ import java.util.Properties;
  * Created by wengshinan on 2015/6/26.
  */
 public class PropertyUtil {
+
     public static final String KEY_DB_URL = "db_url";
     public static final String KEY_DB_USER = "db_user";
     public static final String KEY_DB_PASSWORD = "db_password";
@@ -16,6 +17,9 @@ public class PropertyUtil {
     public static final String KEY_SERVER_PORT = "server_port";
     public static final String KEY_DATA_TYPE = "data_type";
     public static final String KEY_DATA_LONGEST_LENGTH = "data_longest_length";
+    public static final String KEY_DATA_DEFAULT_KEY = "data_default_key";
+    public static final String KEY_DATA_ENCODE_TYPE = "data_encode_type";
+    public static final String KEY_CHARSET = "data_charset";
     private static final String PROPERTY_FILE = "default.properties";
     private Properties properties = null;
 
