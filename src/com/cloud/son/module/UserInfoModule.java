@@ -10,7 +10,7 @@ public class UserInfoModule {
 
     public static int addUser(CallsonUser user) {
 
-        return 0;
+        return 100000001;
     }
 
     public static boolean checkIfExist(String phone) {

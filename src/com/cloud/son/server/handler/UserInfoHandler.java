@@ -19,7 +19,7 @@ public class UserInfoHandler implements HttpHandler {
         InputStream is = httpExchange.getRequestBody();
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String line;
-        String reqStr = null;
+        String reqStr = "";
         while ((line = br.readLine()) != null) {
             reqStr += line;
         }
@@ -33,6 +33,7 @@ public class UserInfoHandler implements HttpHandler {
 
 
         //String response = "Response From UserInfo";
+        httpExchange.getResponseHeaders().set("token", userCont.getToken());
         httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, response.getBytes().length);
         OutputStream os = httpExchange.getResponseBody();
         os.write(response.getBytes(PropertyUtil.getProperty(PropertyUtil.KEY_CHARSET)));

@@ -4,7 +4,7 @@ package com.cloud.son.data.entity;
  * Created by wengshinan on 2015/7/2.
  */
 public class Request {
-    private String token;
+    //private String token;
     private String requestType;
     private String requestBody;
 
@@ -24,11 +24,11 @@ public class Request {
         this.requestBody = requestBody;
     }
 
-    public String getToken() {
-        return token;
-    }
+    //public String getToken() {
+    //    return token;
+//    }
 
-    public void setToken(String token) {
-        this.token = token;
-    }
+//    public void setToken(String token) {
+//        this.token = token;
+//    }
 }

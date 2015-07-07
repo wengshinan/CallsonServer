@@ -23,6 +23,27 @@ public class UserInfoController {
         this.token = token;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    private boolean checkToken() {
+        if (SessionController.checkToken(phone, token)) return true;
+        else return false;
+    }
+
+    private boolean setToken() {
+        String result = SessionController.resetToken(phone, token);
+        if (null != result) {
+            this.token = result;
+            return true;
+        } else return false;
+    }
+
+    private boolean unsetToken() {
+        return SessionController.abandonToken(phone, token);
+    }
+
     public String dealRequest(String reqStr) {
 
         Request request = RequestParser.parse(DataProperty.getDataType(), reqStr);
@@ -34,11 +55,19 @@ public class UserInfoController {
         try {
             switch (type) {
                 case REGISTER:
-                    result = dealRegister(request.getRequestBody());
+                    if (setToken()) {
+                        result = dealRegister(request.getRequestBody());
+                    }
                     break;
                 case LOGIN:
+                    if (setToken()) {
+                        result = dealLogin(request.getRequestBody());
+                    }
                     break;
                 case LOGOUT:
+                    if (unsetToken()) {
+                        result = dealLogout(request.getRequestBody());
+                    }
                     break;
                 case PASSWORD_RESET:
                     break;
@@ -57,12 +86,20 @@ public class UserInfoController {
         return result;
     }
 
+    private String dealLogout(String requestBody) {
+        return null;
+    }
+
+    private String dealLogin(String requestBody) {
+        return null;
+    }
+
     private String dealRegister(String reqStr) throws UserDuplicatedException, MissingNecessaryFieldException {
         CallsonUser user = CallsonUserParser.parse(DataProperty.getDataType(), reqStr);
 
         String phone = user.getUProp().getPhone();
         if (null != phone) {
-            if (UserInfoModule.checkIfExist(phone)) {
+            if (!UserInfoModule.checkIfExist(phone)) {
                 //TODO 处理用户注册
                 int uid = UserInfoModule.addUser(user);
                 user.setUId(uid);
@@ -76,4 +113,6 @@ public class UserInfoController {
 
         return respStr;
     }
+
+
 }
