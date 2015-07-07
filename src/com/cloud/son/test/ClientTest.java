@@ -47,7 +47,7 @@ public class ClientTest {
         urlConn.setDoOutput(true);
         urlConn.setDoInput(true);
         urlConn.setRequestMethod("POST");
-        urlConn.addRequestProperty("phone", "18695600115");
+        //urlConn.addRequestProperty("phone", "18695600115");
         urlConn.addRequestProperty("token", "test_token");
         // 测试内容包
         String teststr = RequestParser.create(DataProperty.DataType.JSON, getTestRequest());

@@ -2,8 +2,10 @@ package com.cloud.son.controller;
 
 import com.cloud.son.data.DataProperty;
 import com.cloud.son.data.RequestType;
+import com.cloud.son.data.constant.ReqRespConstant;
 import com.cloud.son.data.entity.CallsonUser;
 import com.cloud.son.data.entity.Request;
+import com.cloud.son.data.entity.Response;
 import com.cloud.son.data.parser.CallsonUserParser;
 import com.cloud.son.data.parser.RequestParser;
 import com.cloud.son.exception.MissingNecessaryFieldException;
@@ -13,35 +15,10 @@ import com.cloud.son.module.UserInfoModule;
 /**
  * Created by wengshinan on 2015/7/2.
  */
-public class UserInfoController {
+public class UserInfoController extends ControllerBase {
 
-    private String phone;
-    private String token;
-
-    public UserInfoController(String phone, String token){
-        this.phone = phone;
-        this.token = token;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    private boolean checkToken() {
-        if (SessionController.checkToken(phone, token)) return true;
-        else return false;
-    }
-
-    private boolean setToken() {
-        String result = SessionController.resetToken(phone, token);
-        if (null != result) {
-            this.token = result;
-            return true;
-        } else return false;
-    }
-
-    private boolean unsetToken() {
-        return SessionController.abandonToken(phone, token);
+    public UserInfoController(int uid, String token) {
+        super(uid, token);
     }
 
     public String dealRequest(String reqStr) {
@@ -55,14 +32,10 @@ public class UserInfoController {
         try {
             switch (type) {
                 case REGISTER:
-                    if (setToken()) {
-                        result = dealRegister(request.getRequestBody());
-                    }
+                    result = dealRegister(request.getRequestBody());
                     break;
                 case LOGIN:
-                    if (setToken()) {
-                        result = dealLogin(request.getRequestBody());
-                    }
+                    result = dealLogin(request.getRequestBody());
                     break;
                 case LOGOUT:
                     if (unsetToken()) {
@@ -86,32 +59,66 @@ public class UserInfoController {
         return result;
     }
 
-    private String dealLogout(String requestBody) {
+    private String dealLogout(String reqStr) {
         return null;
     }
 
-    private String dealLogin(String requestBody) {
+    // 处理登录请求
+    private String dealLogin(String reqStr) {
+        CallsonUser user = CallsonUserParser.parse(DataProperty.getDataType(), reqStr);
+
+        String phone = user.getUProp().getPhone();
+        String password = user.getUProp().getPassword();
+        if (null != phone) {
+            int uid = UserInfoModule.getUidIfValid(phone, password);
+            if (uid > 0) {
+                user.setUId(uid);
+                this.uid = uid;
+                this.setToken();
+                return genResponse(ReqRespConstant.RESPONSE_CODE_SUCCESS,
+                        ReqRespConstant.RESPONSE_MSG_LOGON_SUCCESS,
+                        CallsonUserParser.create(DataProperty.getDataType(), user));
+            } else if (uid == 0) { //不存在该用户
+                return genResponse(ReqRespConstant.RESPONSE_CODE_USER_NOT_EXIST,
+                        ReqRespConstant.RESPONSE_MSG_USER_NOT_EXIST,
+                        CallsonUserParser.create(DataProperty.getDataType(), user));
+            } else { //密码错误
+                return genResponse(ReqRespConstant.RESPONSE_CODE_NOT_CORRECT_PASSWORD,
+                        ReqRespConstant.RESPONSE_MSG_NOT_CORRECT_PASSWORD,
+                        CallsonUserParser.create(DataProperty.getDataType(), user));
+            }
+        }
+
+
         return null;
     }
 
+    // 处理注册请求
     private String dealRegister(String reqStr) throws UserDuplicatedException, MissingNecessaryFieldException {
+        Response response = new Response();
+
         CallsonUser user = CallsonUserParser.parse(DataProperty.getDataType(), reqStr);
 
         String phone = user.getUProp().getPhone();
         if (null != phone) {
             if (!UserInfoModule.checkIfExist(phone)) {
-                //TODO 处理用户注册
                 int uid = UserInfoModule.addUser(user);
                 user.setUId(uid);
+                this.uid = uid;
+                this.setToken();
+                return genResponse(ReqRespConstant.RESPONSE_CODE_SUCCESS,
+                        ReqRespConstant.RESPONSE_MSG_REGISTER_SUCCESS,
+                        CallsonUserParser.create(DataProperty.getDataType(), user));
             } else {
-                throw new UserDuplicatedException();
+                return genResponse(ReqRespConstant.RESPONSE_CODE_DUPLICATED_USER,
+                        ReqRespConstant.RESPONSE_MSG_DUPLICATED_USER,
+                        CallsonUserParser.create(DataProperty.getDataType(), user));
             }
         } else {
-            throw new MissingNecessaryFieldException();
+            return genResponse(ReqRespConstant.RESPONSE_CODE_MISSING_NECESSARY_FIELD,
+                    ReqRespConstant.RESPONSE_MSG_MISSING_PHONE,
+                    CallsonUserParser.create(DataProperty.getDataType(), user));
         }
-        String respStr = CallsonUserParser.create(DataProperty.getDataType(), user);
-
-        return respStr;
     }
 
 

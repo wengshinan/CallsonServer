@@ -4,11 +4,11 @@
 package com.cloud.son.data.json;
 
 
+import com.cloud.son.data.constant.ReqRespConstant;
 import org.json.JSONObject;
 
 import com.cloud.son.data.ICreator;
 import com.cloud.son.data.IParser;
-import com.cloud.son.data.constant.RequestConstant;
 
 /**
  * 请求类
@@ -92,33 +92,33 @@ public class Request implements ICreator<JSONObject>, IParser<JSONObject> {
 	@Override
 	public JSONObject create() {
 		JSONObject request = new JSONObject();
-		request.put(RequestConstant.REQUEST_PARAM_TYPE, type==null ? null : type.toString());
-		request.put(RequestConstant.REQUEST_PARAM_PARAM, reqParam==null ? null : reqParam.create());
-		request.put(RequestConstant.REQUEST_PARAM_BODY, requestBody);
-		request.put(RequestConstant.REQUEST_PARAM_LOCATION, uLocation == null ? null : uLocation.create());
-		request.put(RequestConstant.REQUEST_PARAM_TOKEN, session == null ? null : session.create());
-		request.put(RequestConstant.REQUEST_PARAM_SERIALNO, serialno);
-		request.put(RequestConstant.REQUEST_PARAM_SERVICE, service);
+		request.put(ReqRespConstant.REQUEST_PARAM_TYPE, type==null ? null : type.toString());
+		request.put(ReqRespConstant.REQUEST_PARAM_PARAM, reqParam==null ? null : reqParam.create());
+		request.put(ReqRespConstant.REQUEST_PARAM_BODY, requestBody);
+		request.put(ReqRespConstant.REQUEST_PARAM_LOCATION, uLocation == null ? null : uLocation.create());
+		request.put(ReqRespConstant.REQUEST_PARAM_TOKEN, session == null ? null : session.create());
+		request.put(ReqRespConstant.REQUEST_PARAM_SERIALNO, serialno);
+		request.put(ReqRespConstant.REQUEST_PARAM_SERVICE, service);
 
 		return request;
 	}
 
 	@Override
 	public void parse(JSONObject obj) {
-		this.type = obj.isNull(RequestConstant.REQUEST_PARAM_TYPE) ?
-				null : ReqType.valueOf(obj.getString(RequestConstant.REQUEST_PARAM_TYPE));
-		this.reqParam = obj.isNull(RequestConstant.REQUEST_PARAM_PARAM) ?
-				null : new ReqParam(obj.getJSONObject(RequestConstant.REQUEST_PARAM_PARAM));
-		this.requestBody = obj.isNull(RequestConstant.REQUEST_PARAM_BODY) ?
-				null : obj.getString(RequestConstant.REQUEST_PARAM_BODY);
-		this.session = obj.isNull(RequestConstant.REQUEST_PARAM_TOKEN) ?
-				null : new Session(obj.getJSONObject(RequestConstant.REQUEST_PARAM_TOKEN));
-		this.uLocation = obj.isNull(RequestConstant.REQUEST_PARAM_LOCATION) ?
-				null : new Location(obj.getJSONObject(RequestConstant.REQUEST_PARAM_LOCATION));
-		this.serialno = obj.isNull(RequestConstant.REQUEST_PARAM_SERIALNO) ?
-				null : obj.getString(RequestConstant.REQUEST_PARAM_SERIALNO);
-		this.service = obj.isNull(RequestConstant.REQUEST_PARAM_SERVICE) ?
-				null : new Service(obj.getJSONObject(RequestConstant.REQUEST_PARAM_SERVICE));
+		this.type = obj.isNull(ReqRespConstant.REQUEST_PARAM_TYPE) ?
+				null : ReqType.valueOf(obj.getString(ReqRespConstant.REQUEST_PARAM_TYPE));
+		this.reqParam = obj.isNull(ReqRespConstant.REQUEST_PARAM_PARAM) ?
+				null : new ReqParam(obj.getJSONObject(ReqRespConstant.REQUEST_PARAM_PARAM));
+		this.requestBody = obj.isNull(ReqRespConstant.REQUEST_PARAM_BODY) ?
+				null : obj.getString(ReqRespConstant.REQUEST_PARAM_BODY);
+		this.session = obj.isNull(ReqRespConstant.REQUEST_PARAM_TOKEN) ?
+				null : new Session(obj.getJSONObject(ReqRespConstant.REQUEST_PARAM_TOKEN));
+		this.uLocation = obj.isNull(ReqRespConstant.REQUEST_PARAM_LOCATION) ?
+				null : new Location(obj.getJSONObject(ReqRespConstant.REQUEST_PARAM_LOCATION));
+		this.serialno = obj.isNull(ReqRespConstant.REQUEST_PARAM_SERIALNO) ?
+				null : obj.getString(ReqRespConstant.REQUEST_PARAM_SERIALNO);
+		this.service = obj.isNull(ReqRespConstant.REQUEST_PARAM_SERVICE) ?
+				null : new Service(obj.getJSONObject(ReqRespConstant.REQUEST_PARAM_SERVICE));
 	}
 
 
@@ -136,13 +136,13 @@ public class Request implements ICreator<JSONObject>, IParser<JSONObject> {
 		;
 		/*
 		public ReqType getReqType(String type){
-			if (RequestConstant.REQUEST_TYPE_UER_LOGIN.equals(type)) return USER_LOGIN;
-			if (RequestConstant.REQUEST_TYPE_UER_REGISTER.equals(type)) return USER_REGISTER;
-			if (RequestConstant.REQUEST_TYPE_UER_LOGOUT.equals(type)) return USER_LOGOUT;
-			if (RequestConstant.REQUEST_TYPE_SERVICE_ADD.equals(type)) return ADD_SERVICE;
-			if (RequestConstant.REQUEST_TYPE_SERVICE_MODIFY.equals(type)) return MODIFY_SERVICE;
-			if (RequestConstant.REQUEST_TYPE_SERVICE_DELETE.equals(type)) return DELETE_SERVICE;
-			if (RequestConstant.REQUEST_TYPE_SERVICE_PAY.equals(type)) return PAY_SERVICE;
+			if (ReqRespConstant.REQUEST_TYPE_UER_LOGIN.equals(type)) return USER_LOGIN;
+			if (ReqRespConstant.REQUEST_TYPE_UER_REGISTER.equals(type)) return USER_REGISTER;
+			if (ReqRespConstant.REQUEST_TYPE_UER_LOGOUT.equals(type)) return USER_LOGOUT;
+			if (ReqRespConstant.REQUEST_TYPE_SERVICE_ADD.equals(type)) return ADD_SERVICE;
+			if (ReqRespConstant.REQUEST_TYPE_SERVICE_MODIFY.equals(type)) return MODIFY_SERVICE;
+			if (ReqRespConstant.REQUEST_TYPE_SERVICE_DELETE.equals(type)) return DELETE_SERVICE;
+			if (ReqRespConstant.REQUEST_TYPE_SERVICE_PAY.equals(type)) return PAY_SERVICE;
 			return null;
 		}*/
 	}
@@ -185,17 +185,17 @@ public class Request implements ICreator<JSONObject>, IParser<JSONObject> {
 		@Override
 		public JSONObject create() {
 			JSONObject reqParam = new JSONObject();
-			reqParam.put(RequestConstant.REQUEST_PARAM_DATE, reqDate);
-			reqParam.put(RequestConstant.REQUEST_PARAM_TIME, reqTime);
+			reqParam.put(ReqRespConstant.REQUEST_PARAM_DATE, reqDate);
+			reqParam.put(ReqRespConstant.REQUEST_PARAM_TIME, reqTime);
 			return reqParam;
 		}
 
 		@Override
 		public void parse(JSONObject data) {
-			reqDate = data.isNull(RequestConstant.REQUEST_PARAM_DATE) ?
-					null : data.getString(RequestConstant.REQUEST_PARAM_DATE);
-			reqTime = data.isNull(RequestConstant.REQUEST_PARAM_TIME) ?
-					null : data.getString(RequestConstant.REQUEST_PARAM_TIME);
+			reqDate = data.isNull(ReqRespConstant.REQUEST_PARAM_DATE) ?
+					null : data.getString(ReqRespConstant.REQUEST_PARAM_DATE);
+			reqTime = data.isNull(ReqRespConstant.REQUEST_PARAM_TIME) ?
+					null : data.getString(ReqRespConstant.REQUEST_PARAM_TIME);
 
 		}
 	}

@@ -16,4 +16,9 @@ public class UserInfoModule {
     public static boolean checkIfExist(String phone) {
         return false;
     }
+
+    public static int getUidIfValid(String phone, String password) {
+
+        return 100001;
+    }
 }

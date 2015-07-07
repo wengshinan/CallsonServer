@@ -25,10 +25,10 @@ public class UserInfoHandler implements HttpHandler {
         }
         System.out.println(reqStr);
 
-        String phone = httpExchange.getRequestHeaders().getFirst("phone");
+        int uid = Integer.valueOf(httpExchange.getRequestHeaders().getFirst("uid"));
         String token = httpExchange.getRequestHeaders().getFirst("token");
 
-        UserInfoController userCont = new UserInfoController(phone, token);
+        UserInfoController userCont = new UserInfoController(uid, token);
         String response = userCont.dealRequest(reqStr);
 
 

@@ -3,12 +3,12 @@ package com.cloud.son.data.constant;
 
 
 /**
- * 请求常量
+ * 请求返回常量
  * 
  * @author fjfh-wengsn
  *
  */
-public class RequestConstant {
+public class ReqRespConstant {
 	
 	public static final String REQUEST_PARAM_DATE = "date";
 	public static final String REQUEST_PARAM_TIME = "time";
@@ -27,5 +27,24 @@ public class RequestConstant {
 	public static final String REQUEST_TYPE_SERVICE_MODIFY = "ModifyService";
 	public static final String REQUEST_TYPE_SERVICE_DELETE = "DeleteService";
 	public static final String REQUEST_TYPE_SERVICE_PAY = "PayService";
-	
+
+
+	public static final String RESPONSE_PARAM_RESPCODE = "respCode";
+	public static final String RESPONSE_PARAM_RESPMSG = "respMsg";
+	public static final String RESPONSE_PARAM_BODY = "body";
+
+
+	public static final int RESPONSE_CODE_SUCCESS = 0;
+	public static final int RESPONSE_CODE_MISSING_NECESSARY_FIELD = -1;
+	public static final int RESPONSE_CODE_DUPLICATED_USER = -2;
+	public static final int RESPONSE_CODE_USER_NOT_EXIST = -3;
+	public static final int RESPONSE_CODE_NOT_CORRECT_PASSWORD = -4;
+
+	public static final String RESPONSE_MSG_REGISTER_SUCCESS = "注册成功";
+	public static final String RESPONSE_MSG_DUPLICATED_USER = "用户已存在";
+	public static final String RESPONSE_MSG_MISSING_PHONE = "缺少手机号";
+
+	public static final String RESPONSE_MSG_LOGON_SUCCESS = "登录成功";
+	public static final String RESPONSE_MSG_USER_NOT_EXIST = "该手机对应的用户不存在";
+	public static final String RESPONSE_MSG_NOT_CORRECT_PASSWORD = "密码不正确";
 }

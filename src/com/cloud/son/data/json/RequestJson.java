@@ -2,7 +2,7 @@ package com.cloud.son.data.json;
 
 import com.cloud.son.data.ICreator;
 import com.cloud.son.data.IParser;
-import com.cloud.son.data.constant.RequestConstant;
+import com.cloud.son.data.constant.ReqRespConstant;
 import org.json.JSONObject;
 import com.cloud.son.data.entity.Request;
 
@@ -30,17 +30,15 @@ public class RequestJson implements ICreator<JSONObject>, IParser<JSONObject> {
     @Override
     public JSONObject create() {
         JSONObject reqObj = new JSONObject();
-        reqObj.put(RequestConstant.REQUEST_PARAM_TYPE, request.getRequestType());
-        reqObj.put(RequestConstant.REQUEST_PARAM_BODY, request.getRequestBody());
-//      reqObj.put(RequestConstant.REQUEST_PARAM_TOKEN, request.getToken());
+        reqObj.put(ReqRespConstant.REQUEST_PARAM_TYPE, request.getRequestType());
+        reqObj.put(ReqRespConstant.REQUEST_PARAM_BODY, request.getRequestBody());
 
         return reqObj;
     }
 
     @Override
     public void parse(JSONObject obj) {
-        this.request.setRequestType(obj.getString(RequestConstant.REQUEST_PARAM_TYPE));
-        this.request.setRequestBody(obj.getString(RequestConstant.REQUEST_PARAM_BODY));
-        //this.request.setToken(obj.getString(RequestConstant.REQUEST_PARAM_TOKEN));
+        this.request.setRequestType(obj.getString(ReqRespConstant.REQUEST_PARAM_TYPE));
+        this.request.setRequestBody(obj.getString(ReqRespConstant.REQUEST_PARAM_BODY));
     }
 }
