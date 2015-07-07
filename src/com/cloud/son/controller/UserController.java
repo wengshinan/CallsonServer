@@ -8,64 +8,63 @@ import com.cloud.son.data.entity.Request;
 import com.cloud.son.data.entity.Response;
 import com.cloud.son.data.parser.CallsonUserParser;
 import com.cloud.son.data.parser.RequestParser;
+import com.cloud.son.data.parser.ResponseParser;
 import com.cloud.son.exception.MissingNecessaryFieldException;
 import com.cloud.son.exception.UserDuplicatedException;
 import com.cloud.son.module.UserInfoModule;
 
 /**
+ * 账号请求处理器
  * Created by wengshinan on 2015/7/2.
  */
-public class UserInfoController extends ControllerBase {
+public class UserController extends ControllerBase {
 
-    public UserInfoController(int uid, String token) {
+    public UserController(int uid, String token) {
         super(uid, token);
     }
 
     public String dealRequest(String reqStr) {
 
         Request request = RequestParser.parse(DataProperty.getDataType(), reqStr);
+        Response response = null;
 
         RequestType.UserInfoReqType type = RequestType.UserInfoReqType.valueOf(request.getRequestType());
 
-        String result = null;
+        String result;
+        CallsonUser user = CallsonUserParser.parse(DataProperty.getDataType(), request.getRequestBody());
 
-        try {
-            switch (type) {
-                case REGISTER:
-                    result = dealRegister(request.getRequestBody());
-                    break;
-                case LOGIN:
-                    result = dealLogin(request.getRequestBody());
-                    break;
-                case LOGOUT:
-                    if (unsetToken()) {
-                        result = dealLogout(request.getRequestBody());
-                    }
-                    break;
-                case PASSWORD_RESET:
-                    break;
-                case PHONE_CHANGE:
-                    break;
-                case INFO_MODIFY:
-                    break;
-            }
-        } catch (UserDuplicatedException e) {
-            e.printStackTrace();
-        } catch (MissingNecessaryFieldException e) {
-            e.printStackTrace();
-        } finally {
+        switch (type) {
+            case REGISTER:
+                response = dealRegister(user);
+                break;
+            case LOGIN:
+                response = dealLogin(user);
+                break;
+            case LOGOUT:
+                if (unsetToken()) {
+                    response = dealLogout(user);
+                }
+                break;
+            case PASSWORD_RESET:
+                break;
+            case PHONE_CHANGE:
+                break;
+            case INFO_MODIFY:
+                break;
         }
+
+        result = ResponseParser.create(DataProperty.getDataType(), response);
 
         return result;
     }
 
-    private String dealLogout(String reqStr) {
+    // 处理登出请求
+    private Response dealLogout(CallsonUser user) {
         return null;
     }
 
     // 处理登录请求
-    private String dealLogin(String reqStr) {
-        CallsonUser user = CallsonUserParser.parse(DataProperty.getDataType(), reqStr);
+    private Response dealLogin(CallsonUser user) {
 
         String phone = user.getUProp().getPhone();
         String password = user.getUProp().getPassword();
@@ -94,10 +93,8 @@ public class UserInfoController extends ControllerBase {
     }
 
     // 处理注册请求
-    private String dealRegister(String reqStr) throws UserDuplicatedException, MissingNecessaryFieldException {
+    private Response dealRegister(CallsonUser user){
         Response response = new Response();
-
-        CallsonUser user = CallsonUserParser.parse(DataProperty.getDataType(), reqStr);
 
         String phone = user.getUProp().getPhone();
         if (null != phone) {

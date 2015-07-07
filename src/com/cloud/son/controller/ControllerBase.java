@@ -7,12 +7,12 @@ import com.cloud.son.data.parser.ResponseParser;
 /**
  * Created by wengshinan on 2015/7/7.
  */
-public class ControllerBase {
+public abstract class ControllerBase {
 
     protected int uid;
     protected String token;
 
-    public ControllerBase(int uid, String token) {
+    protected ControllerBase(int uid, String token) {
         this.uid = uid;
         this.token = token;
     }
@@ -38,12 +38,14 @@ public class ControllerBase {
         return SessionController.abandonToken(uid);
     }
 
-    protected String genResponse(int respCode, String respMsg, String respBody) {
+    protected Response genResponse(int respCode, String respMsg, String respBody) {
         Response response = new Response();
         response.setRespCode(respCode);
         response.setRespMsg(respMsg);
         response.setRespBody(respBody);
 
-        return ResponseParser.create(DataProperty.getDataType(), response);
+        return response;
     }
+
+    protected abstract String dealRequest(String reqStr);
 }

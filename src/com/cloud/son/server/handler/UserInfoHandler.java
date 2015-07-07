@@ -1,6 +1,6 @@
 package com.cloud.son.server.handler;
 
-import com.cloud.son.controller.UserInfoController;
+import com.cloud.son.controller.UserController;
 import com.cloud.son.utils.PropertyUtil;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -28,7 +28,7 @@ public class UserInfoHandler implements HttpHandler {
         int uid = Integer.valueOf(httpExchange.getRequestHeaders().getFirst("uid"));
         String token = httpExchange.getRequestHeaders().getFirst("token");
 
-        UserInfoController userCont = new UserInfoController(uid, token);
+        UserController userCont = new UserController(uid, token);
         String response = userCont.dealRequest(reqStr);
 
 
